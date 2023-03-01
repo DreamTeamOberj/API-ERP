@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const corsOptions = {
-    origin: ['https://paye-ton-kawa.vercel.app','http://localhost'],
+    origin: ['https://paye-ton-kawa.vercel.app','http://localhost:8100','http://localhost:3000'],
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization']
   };
