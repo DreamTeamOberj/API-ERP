@@ -1,16 +1,12 @@
 const mysql = require('mysql2');
 
-const connection = mysql.createConnection({
+const connection = mysql.createPool({
     host: '51.91.153.31',
     user: 'u642141514_admin6',
     password: 'Groupe667',
-    database: 'u642141514_admin6'
+    database: 'u642141514_admin6',
+    waitForConnections: true
 });
-
-connection.connect(function (err) {
-    if (err) throw err
-    console.log('You are now connected with mysql database...')
-})
 
 exports.findOrders = (req, res) => {
 
@@ -23,8 +19,8 @@ exports.findOrders = (req, res) => {
 
 exports.findProductsInOrder = (req, res) => {
 
-    connection.query('SELECT * from product join orders on product.idOrder = orders.id where product.idOrder=?',
-    [req.params.id],
+    connection.query('select * from product join orders on product.idProduit_Orders = orders.idOrders where product.idProduit_Orders=?',
+    [req.params.idProduit_Orders],
         function (error, results, fields) {
             if (error) throw error;
             res.end(JSON.stringify(results));
@@ -32,8 +28,8 @@ exports.findProductsInOrder = (req, res) => {
 };
 
 exports.findOneProductsInOneOrder = (req, res) => {
-    connection.query('SELECT * FROM product JOIN orders ON product.idOrder = orders.id WHERE product.idOrder = ? AND product.id = ?',
-    [req.params.id, req.params.id],
+    connection.query('select * from product join orders on product.idProduit_Orders = orders.idOrders where product.idProduit_Orders=? AND product.idProduit = ?',
+    [req.params.idProduit_Orders, req.params.idProduit],
         function (error, results, fields) {
             if (error) throw error;
             res.

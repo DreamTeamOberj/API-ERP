@@ -1,16 +1,17 @@
 const mysql = require('mysql2');
 
-const connection = mysql.createConnection({
+const connection = mysql.createPool({
     host: '51.91.153.31',
     user: 'u642141514_admin6',
     password: 'Groupe667',
-    database: 'u642141514_admin6'
+    database: 'u642141514_admin6',
+    waitForConnections: true
 });
 
-connection.connect(function (err) {
-    if (err) throw err
-    console.log('You are now connected with mysql database...')
-})
+// connection.connect(function (err) {
+//     if (err) throw err
+//     console.log('You are now connected with mysql database...')
+// })
 
 exports.findAll = (req, res) => {
     connection.query('select * from product',
