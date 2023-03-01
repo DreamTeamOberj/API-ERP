@@ -3,5 +3,5 @@ module.exports = (app) => {
 
     app.get('/products', product.findAll );
 
-    app.get('/product/:id', product.findOne);
+    app.get('/product/:idProduit', product.findOne);
 }
