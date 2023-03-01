@@ -5,10 +5,6 @@ const port = 3000;
 const rateLimit = require('express-rate-limit');
 const app = express();
 
-app.use(cors({
-    origin: ['http://localhost/', 'https://api-erp.vercel.app/']
-}));
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
