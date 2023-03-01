@@ -8,6 +8,14 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+const corsOptions = {
+    origin: 'https://api-erp.vercel.app/',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+  };
+  
+app.use(cors(corsOptions));
+
 require('./routes/product')(app);
 require('./routes/orders')(app);
 
