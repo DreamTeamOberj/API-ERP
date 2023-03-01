@@ -19,8 +19,8 @@ exports.findOrders = (req, res) => {
 
 exports.findProductsInOrder = (req, res) => {
 
-    connection.query('select * from product join orders on product.idProduit_Orders = orders.idOrders where product.idProduit_Orders=?',
-    [req.params.idProduit_Orders],
+    connection.query('select * from product join orders on product.idProduct_Orders = orders.idOrders where product.idProduct_Orders=?',
+    [req.params.idProduct_Orders],
         function (error, results, fields) {
             if (error) throw error;
             res.end(JSON.stringify(results));
@@ -28,8 +28,8 @@ exports.findProductsInOrder = (req, res) => {
 };
 
 exports.findOneProductsInOneOrder = (req, res) => {
-    connection.query('select * from product join orders on product.idProduit_Orders = orders.idOrders where product.idProduit_Orders=? AND product.idProduit = ?',
-    [req.params.idProduit_Orders, req.params.idProduit],
+    connection.query('select * from product join orders on product.idProduct_Orders = orders.idOrders where product.idProduct_Orders=? AND product.idProduct = ?',
+    [req.params.idProduct_Orders, req.params.idProduct],
         function (error, results, fields) {
             if (error) throw error;
             res.

@@ -23,8 +23,8 @@ exports.findAll = (req, res) => {
 
 exports.findOne = (req, res) => {
 
-    connection.query('select * from product where idProduit=?',
-        [req.params.idProduit],
+    connection.query('select * from product where idProduct=?',
+        [req.params.idProduct],
         function (error, results, fields) {
             if (error) throw error;
             res.end(JSON.stringify(results));

@@ -3,7 +3,7 @@ module.exports = (app) => {
 
     app.get('/orders', orders.findOrders);
 
-    app.get('/order/:idProduit_Orders/products', orders.findProductsInOrder);
+    app.get('/order/:idProduct_Orders/products', orders.findProductsInOrder);
 
-    app.get('/order/:idProduit_Orders/product/:idProduit', orders.findOneProductsInOneOrder);
+    app.get('/order/:idProduct_Orders/product/:idProduct', orders.findOneProductsInOneOrder);
 }
